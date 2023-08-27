@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>todo list</title>
+</head>
+<style>
+    section {
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section input {
+        height: 30px;
+        width: 500px;
+        padding: 10px;
+        border-radius: 5px;
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: B titr;
+        margin: 0 5px;
+    }
+
+    section button {
+        height: 55px;
+        font-size: 20px;
+        width: 75px;
+        background-color: #250091;
+        color: white;
+        cursor: pointer;
+
+    }
+
+    .todo {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 25px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 625px !important;
+    }
+
+    .todo .task {
+        margin: 10px;
+        height: 60px;
+        border: 1px blueviolet solid;
+        width: 600px;
+        background-color: aqua;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .todo span {
+        margin: 0 15px;
+    }
+
+    i {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <section>
+        <input type="text" class="input" placeholder="write task">
+        <button class="add-btn">add</button>
+    </section>
+    <div class="todo">
+        <!--<div class="task">
+            <span>task1</span>
+            <span><i class="fa fa-trash-o"></i></span>
+        </div>!-->
+    </div>
+
+    <script>
+        const input = document.querySelector(".input")
+        const todolist = document.querySelector(".todo");
+
+        document.querySelector(".add-btn").addEventListener("click", () => {
+            const input_value = input.value
+            const new_el = document.createElement('div')
+            new_el.classList.add('task');
+            const new_todo = `<span>${input_value}</span>
+            <span><i class="fa fa-trash-o"></i></span>`;
+            new_el.innerHTML = new_todo
+            todolist.appendChild(new_el)
+            input.value = ""
+        })
+
+        todolist.addEventListener('click', (e) => {
+            const classList = [...e.target.classList]
+            if (classList[1] == 'fa-trash-o') {
+                const todo_item = e.target.parentElement.parentElement
+                todo_item.remove();
+            }
+        })
+    </script>
+</body>
+
+</html>
