@@ -1,3 +1,3 @@
 # TodoIList
 
-a simple todo created with html css and js 
+a simple todo list created with html css and js 
